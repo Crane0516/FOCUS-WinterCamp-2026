@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="red_cube">
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.5 0.5 0.5</size> <!-- 立方体尺寸：0.5x0.5x0.5米 -->
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.5 0.5 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://gazebo_materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name> <!-- 纯红色材质 -->
+          </script>
+        </material>
+      </visual>
+      <inertial>
+        <mass>5.0</mass>
+        <inertia>
+          <ixx>0.104167</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.104167</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.104167</izz>
+        </inertia>
+      </inertial>
+    </link>
+    <static>true</static> <!-- 设置为静态，防止被碰撞移动 -->
+  </model>
+</sdf>

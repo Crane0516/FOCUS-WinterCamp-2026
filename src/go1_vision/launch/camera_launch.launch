@@ -1,0 +1,7 @@
+<launch>
+    <!-- 1. 启动Unitree Go1 Gazebo空世界仿真 -->
+    <include file="$(find unitree_gazebo)/launch/go1_empty_world.launch"/>
+
+    <!-- 2. 启动Go1相机订阅节点 -->
+    <node name="go1_camera_subscriber" pkg="go1_vision" type="camera_subscriber.py" output="screen"/>
+</launch>

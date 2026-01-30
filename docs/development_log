@@ -1,1 +1,27 @@
+问题一：配置环境时虚拟机不能联网
+# 启用ens33网卡
+sudo ip link set ens33 up
+# 强制重新从路由器获取IP/网关/DNS
+sudo dhclient ens33
 
+问题二：通过键盘控制机器狗
+roslaunch unitree_guide gazeboSim.launch
+另开终端
+cd catkin_ws/src/
+./devel/lib/unitree_guide/junior_ctrl    
+启动控制器后，机器人会躺在模拟器的地面上，然后按键盘上的“2”键将机器人的有限状态机（FSM）从被动（初始状态）切换到固定站位，然后按“4”键将FSM从固定站位切换到小跑
+
+问题三：给节点文件添加可执行文件
+chmod +x square_motion.py
+运行编写的python节点
+rosrun unitree_guide square_motion.py
+rosrun go1_vision camera_subscriber.py
+
+问题四；放置红色的立方体
+Rosrun gazebo_ros spawn_model -file $(rospack find go1_vision)/models/red_cube_sdf/red_cube_05m.sdf -sdf -model red_cube -x 3.0 -y 0.0 -z 0.25 -R 0 -P 0 -Y 0
+没有用sdf文件创建立方体模型时，模型的红色不正常显示，一直是纯白色
+可能是电脑配置的原因，输入命令后gazebo会卡，需要等一会才能生成立方体
+
+每次修改完文件需要重新编译
+catkin_make
+source devel/setup.bash
